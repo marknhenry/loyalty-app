@@ -1,6 +1,5 @@
 """pytest fixtures shared across all test modules."""
 
-import asyncio
 from collections.abc import AsyncGenerator
 
 import pytest
@@ -25,31 +24,22 @@ pytest_plugins = ["pytest_asyncio"]
 
 
 # ---------------------------------------------------------------------------
-# In-memory SQLite engine for tests (no PostgreSQL required)
+# Per-test fresh in-memory SQLite — ensures complete isolation
 # ---------------------------------------------------------------------------
-
-TEST_DB_URL = "sqlite+aiosqlite:///:memory:"
-
-_test_engine = create_async_engine(TEST_DB_URL, echo=False)
-_test_session_factory = async_sessionmaker(
-    _test_engine, expire_on_commit=False, class_=AsyncSession
-)
-
-
-@pytest_asyncio.fixture(scope="session", autouse=True)
-async def setup_database():
-    async with _test_engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-    yield
-    async with _test_engine.begin() as conn:
-        await conn.run_sync(Base.metadata.drop_all)
 
 
 @pytest_asyncio.fixture
 async def db() -> AsyncGenerator[AsyncSession, None]:
-    async with _test_session_factory() as session:
+    """Each test gets its own fresh in-memory database."""
+    engine = create_async_engine("sqlite+aiosqlite:///:memory:", echo=False)
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+    factory = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
+    async with factory() as session:
         yield session
-        await session.rollback()
+
+    await engine.dispose()
 
 
 # ---------------------------------------------------------------------------
@@ -59,11 +49,15 @@ async def db() -> AsyncGenerator[AsyncSession, None]:
 
 @pytest_asyncio.fixture
 async def client(db: AsyncSession) -> AsyncGenerator[AsyncClient, None]:
-    """AsyncClient with DB override so tests use in-memory SQLite."""
+    """AsyncClient wired to the per-test in-memory DB."""
     from app.main import create_app
 
     app = create_app()
-    app.dependency_overrides[get_db] = lambda: db
+
+    async def _override_db():
+        yield db
+
+    app.dependency_overrides[get_db] = _override_db
 
     async with AsyncClient(
         transport=ASGITransport(app=app), base_url="http://test"
@@ -119,7 +113,7 @@ async def second_member(db: AsyncSession) -> Member:
 
 
 # ---------------------------------------------------------------------------
-# Token helpers
+# Token helpers (plain functions — not fixtures)
 # ---------------------------------------------------------------------------
 
 
@@ -159,3 +153,4 @@ async def standard_rate(db: AsyncSession) -> ExchangeRate:
     await db.commit()
     await db.refresh(rate)
     return rate
+

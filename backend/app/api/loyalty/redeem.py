@@ -18,6 +18,14 @@ from app.models import LedgerEntry, Offer, RedemptionCode, TransactionType
 from app.schemas import RedeemRequest, RedeemResponse, UseCodeRequest, UseCodeResponse
 from app.utils import generate_redemption_code, now_utc, redemption_expiry
 
+
+def _is_expired(dt) -> bool:
+    """Compare datetimes safely regardless of timezone-awareness (SQLite vs Postgres)."""
+    now = now_utc()
+    if dt.tzinfo is None:
+        now = now.replace(tzinfo=None)
+    return dt < now
+
 logger = logging.getLogger("loyalty_app")
 router = APIRouter(tags=["loyalty"])
 
@@ -46,7 +54,7 @@ async def create_redemption(
             detail={"code": "OFFER_NOT_FOUND", "message": "Offer not found or unavailable"},
         )
 
-    if offer.expires_at and offer.expires_at < now_utc():
+    if offer.expires_at and _is_expired(offer.expires_at):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail={"code": "OFFER_EXPIRED", "message": "Offer has expired"},
@@ -167,7 +175,7 @@ async def use_redemption_code(
             detail={"code": "CODE_ALREADY_USED", "message": "Code has already been redeemed"},
         )
 
-    if redemption.expires_at < now_utc():
+    if _is_expired(redemption.expires_at):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail={"code": "CODE_EXPIRED", "message": "Code has expired"},

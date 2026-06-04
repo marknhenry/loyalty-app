@@ -5,6 +5,7 @@ import logging
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_db
@@ -61,7 +62,7 @@ async def list_locations(
     db: AsyncSession = Depends(get_db),
 ) -> list[LocationWithOffersOut]:
     """Public-readable endpoint — no auth required for member browsing."""
-    query = select(Location)
+    query = select(Location).options(selectinload(Location.offers))
     if not include_inactive:
         query = query.where(Location.is_active == True)
     result = await db.execute(query.order_by(Location.name))
