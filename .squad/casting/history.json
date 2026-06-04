@@ -1,0 +1,24 @@
+{
+  "universe_usage_history": [
+    {
+      "assignment_id": "loyalty-app-20260604T193516",
+      "universe": "Custom user-defined",
+      "assigned_at": "2026-06-04T19:35:16.745+04:00"
+    }
+  ],
+  "assignment_cast_snapshots": {
+    "loyalty-app-20260604T193516": {
+      "project": "loyalty-app",
+      "assigned_at": "2026-06-04T19:35:16.745+04:00",
+      "members": [
+        "Bond",
+        "Leonardo",
+        "Donatello",
+        "Rafaello",
+        "Picasso",
+        "Scribe",
+        "Moneypenny"
+      ]
+    }
+  }
+}
