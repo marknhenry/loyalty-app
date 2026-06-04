@@ -1,0 +1,53 @@
+{
+  "agents": {
+    "bond": {
+      "persistent_name": "Bond",
+      "universe": "Custom user-defined",
+      "created_at": "2026-06-04T19:35:16.745+04:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "leonardo": {
+      "persistent_name": "Leonardo",
+      "universe": "Custom user-defined",
+      "created_at": "2026-06-04T19:35:16.745+04:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "donatello": {
+      "persistent_name": "Donatello",
+      "universe": "Custom user-defined",
+      "created_at": "2026-06-04T19:35:16.745+04:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "rafaello": {
+      "persistent_name": "Rafaello",
+      "universe": "Custom user-defined",
+      "created_at": "2026-06-04T19:35:16.745+04:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "picasso": {
+      "persistent_name": "Picasso",
+      "universe": "Custom user-defined",
+      "created_at": "2026-06-04T19:35:16.745+04:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "scribe": {
+      "persistent_name": "Scribe",
+      "universe": "Fixed",
+      "created_at": "2026-06-04T19:35:16.745+04:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "moneypenny": {
+      "persistent_name": "Moneypenny",
+      "universe": "Custom user-defined",
+      "created_at": "2026-06-04T19:35:16.745+04:00",
+      "legacy_named": false,
+      "status": "active"
+    }
+  }
+}

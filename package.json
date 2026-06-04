@@ -1,0 +1,26 @@
+{
+  "name": "loyalty-app-platform",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Root task runner for loyalty-app local platform workflows",
+  "scripts": {
+    "setup": "npm run setup:frontend && npm run setup:backend",
+    "setup:frontend": "npm --prefix frontend install",
+    "setup:backend": "python -m pip install -r backend\\requirements.txt",
+    "dev": "concurrently -k -n frontend,backend -c cyan,green \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "python -m uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 4000",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:backend": "python -c \"print('Backend build step not configured yet')\"",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "npm --prefix frontend run lint",
+    "lint:backend": "python -c \"print('Backend lint step not configured yet')\"",
+    "test": "npm run test:frontend && npm run test:backend",
+    "test:frontend": "npm --prefix frontend run test",
+    "test:backend": "python -c \"print('Backend test step not configured yet')\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
