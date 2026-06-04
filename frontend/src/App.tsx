@@ -1,23 +1,23 @@
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import { Nav } from './components/Nav/Nav';
+import { DashboardPage } from './pages/DashboardPage';
+import { ExchangePage } from './pages/ExchangePage';
+import { RedemptionPage } from './pages/RedemptionPage';
+import './App.css';
 
 function App() {
   return (
-    <main className="app-shell">
-      <section className="card">
-        <p className="eyebrow">Loyalty App</p>
-        <h1>Points Exchange & Redemption</h1>
-        <p className="summary">
-          A clean frontend foundation for checking balances, exchanging partner
-          points, and redeeming rewards in one place.
-        </p>
-        <div className="pill-row" aria-label="planned modules">
-          <span>Balances</span>
-          <span>Exchange</span>
-          <span>Redemptions</span>
-        </div>
-      </section>
-    </main>
-  )
+    <div className="app-shell">
+      <Nav />
+      <main className="app-content">
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/exchange" element={<ExchangePage />} />
+          <Route path="/redeem" element={<RedemptionPage />} />
+        </Routes>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;

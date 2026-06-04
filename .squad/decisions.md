@@ -34,26 +34,26 @@
 
 ### 2026-06-04T19:46:50.800+04:00: Design Review Decisions — Phase 1 Critical Path
 **By:** Bond (Lead)  
-**Status:** Pending Squad Review & Approval
+**Status:** ✅ APPROVED
 
 **Scope:** 11 architectural and operational decisions covering ledger model, authentication, API key management, exchange rates, redemption codes, frontend state, docker-compose setup, error responses, validation, testing, and environment configuration.
 
-**Key Decisions:**
-- **Ledger append-only** (immutable transactions for financial audit trail)
-- **JWT auth** with 15-min access token + 7-day refresh token (httpOnly cookie)
-- **API key authentication** for external apps (scalable to OAuth2 in v2)
-- **Exchange rates** in database, not hardcoded (ops-driven flexibility)
-- **8-digit alphanumeric redemption codes** (easy in-store entry; non-guessable)
-- **React Context API** for MVP state management (upgrade to Zustand if needed)
-- **docker-compose** for local dev (PostgreSQL + Redis + services)
-- **Consistent error responses** with structured schema
-- **Pydantic validation** on all routes (type-safe API boundary)
-- **70% test coverage** target on business logic
-- **.env configuration** for secrets management (not hardcoded)
+**Key Decisions (All Approved):**
+- **Ledger append-only** (immutable transactions for financial audit trail) ✅
+- **JWT auth** with 15-min access token + 7-day refresh token (httpOnly cookie) ✅
+- **API key authentication** for external apps (scalable to OAuth2 in v2) ✅
+- **Exchange rates** in database, not hardcoded (ops-driven flexibility) ✅
+- **8-digit alphanumeric redemption codes** (easy in-store entry; non-guessable) ✅
+- **React Context API** for MVP state management (upgrade to Zustand if needed) ✅
+- **docker-compose** for local dev (PostgreSQL + Redis + services) ✅
+- **Consistent error responses** with structured schema ✅
+- **Pydantic validation** on all routes (type-safe API boundary) ✅
+- **70% test coverage** target on business logic ✅
+- **.env configuration** for secrets management (not hardcoded) ✅
 
 **Impact:** Establishes critical baseline for backend data models, security posture, and developer experience before Phase 1 implementation begins.
 
-**Owner:** Bond (with Backend Lead, Frontend Lead, DevOps Lead, QA Lead approvals pending)
+**Owner:** Bond (Lead) — Approved by Mark Henry on 2026-06-04T21:44:04.147+04:00
 
 **Reference:** Full design review details in `decisions/inbox/bond-design-review.md` (now merged).
 
@@ -86,7 +86,7 @@
 
 ### 2026-06-04T19:56:55.410+04:00: Issue Triage — Design Review + Requirements → Backlog
 **By:** Bond (Lead)  
-**Status:** Complete (fallback mode)
+**Status:** ✅ UNBLOCKED FOR PHASE 1
 
 **What:** Extracted all actionable risks, open items, pending tasks, and follow-up actions from design review and requirements into formal Issue Register (`docs/backlog-issues.md`).
 
@@ -94,18 +94,32 @@
 - **3 CRITICAL blockers:** JWT auth middleware, database models + PostgreSQL, frontend API integration
 - **6 HIGH priority:** Validation, test infrastructure, docker-compose, CI/CD, ledger safety, concurrency
 - **2 MEDIUM priority:** Rate limiting, structured logging
-- **2 Pending decisions:** Point ingestion API design, ledger correction workflow (awaiting Mark Henry)
+- **2 Pending decisions:** Point ingestion API design ✅ APPROVED, ledger correction workflow ✅ APPROVED
 
 **Routing Summary:**
 - Donatello (Backend): 7 issues
-- Picasso (Frontend): 3 issues
+- Picasso (Frontend): 3 issues (working with Mark Henry on UI mockup)
 - Rafaello (Platform): 2 issues
-- Mark Henry (Product): 2 issues
-- **Total: 14 actionable items**
+- Mark Henry (Product): 2 issues (UI direction)
+- **Total: 14 actionable items — READY FOR PHASE 1 KICKOFF**
 
-**Why Fallback:** Repository not yet git-initialized; created markdown register for manual import or GitHub API batch-load.
+**Outcome:** All design decisions approved by Mark Henry. Phase 1 implementation can begin immediately.
 
-**Outcome:** Issue backlog captured; blocked on git init and GitHub issue creation. Squad approval needed before Phase 1 starts.
+---
+
+### 2026-06-04T21:44:04.147+04:00: Phase 1 Pending Decisions — APPROVED
+**By:** Mark Henry (Product Owner)  
+**Status:** ✅ APPROVED
+
+**Decisions:**
+1. **PD.1: Point Ingestion API** — API key auth + Idempotency-Key header ✅
+2. **PD.2: Ledger Correction Workflow** — Reversal transactions (immutable); members see corrections in UI ✅
+3. **PD.3: Exchange Rate Configuration** — Database-driven rates (ops flexibility) ✅
+4. **PD.4: Redemption Code Format** — 8-digit alphanumeric (easy in-store entry) ✅
+
+**Impact:** Unblocks all Phase 1 backend implementation (Stories L.2, L.3, L.4, L.5).
+
+**Reference:** User stories with full acceptance criteria in `docs/user-stories.md`
 
 ---
 

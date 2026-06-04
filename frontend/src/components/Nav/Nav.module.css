@@ -1,0 +1,196 @@
+.nav {
+  width: 260px;
+  min-height: 100vh;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 0.5rem;
+}
+
+.brandIcon {
+  font-size: 1.4rem;
+  color: #818cf8;
+}
+
+.brandName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.03em;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  overflow: hidden;
+}
+
+.userName {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userEmail {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.link:hover {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.active {
+  background: #1e293b;
+  color: #818cf8;
+}
+
+.linkIcon {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.balanceBox {
+  margin-top: auto;
+  background: linear-gradient(135deg, #3730a3, #4f46e5);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.balanceLabel {
+  margin: 0 0 0.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+}
+
+.balanceValue {
+  margin: 0 0 0.25rem;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.balanceSub {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #c7d2fe;
+}
+
+.linkLabel {
+}
+
+@media (max-width: 768px) {
+  .nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: unset;
+    height: 64px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    gap: 0;
+    z-index: 1000;
+    border-top: 1px solid #1e293b;
+  }
+
+  .brand,
+  .userCard,
+  .balanceBox {
+    display: none;
+  }
+
+  .links {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0;
+  }
+
+  .link {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    border-radius: 0;
+  }
+
+  .linkIcon {
+    font-size: 1.2rem;
+    width: auto;
+  }
+
+  .linkLabel {
+    font-size: 0.65rem;
+  }
+}

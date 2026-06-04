@@ -1,52 +1,22 @@
 .app-shell {
   display: flex;
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
 }
 
-.card {
-  width: min(680px, 100%);
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  background: linear-gradient(145deg, #f8fafc, #eef2ff);
+  min-height: 100vh;
 }
 
-.eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #475569;
-}
+@media (max-width: 768px) {
+  .app-shell {
+    flex-direction: column;
+  }
 
-h1 {
-  margin: 0;
-  font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem);
-  color: #0f172a;
-}
-
-.summary {
-  margin-top: 1rem;
-  color: #334155;
-  line-height: 1.6;
-}
-
-.pill-row {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.pill-row span {
-  background: #eef2ff;
-  color: #3730a3;
-  border-radius: 9999px;
-  padding: 0.35rem 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 500;
+  .app-content {
+    padding-bottom: 64px;
+    min-height: calc(100vh - 64px);
+  }
 }

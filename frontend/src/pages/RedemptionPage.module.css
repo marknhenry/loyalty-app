@@ -1,0 +1,355 @@
+.page {
+  padding: 2rem;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1.25rem;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.balancePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 9999px;
+  padding: 0.4rem 1rem;
+  align-self: flex-start;
+}
+
+.balancePillLabel {
+  font-size: 0.8rem;
+  color: #6366f1;
+  font-weight: 500;
+}
+
+.balancePillValue {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4338ca;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.75rem;
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.stepHeading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.locationList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.locationOption {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+  font-family: inherit;
+}
+
+.locationOption:hover:not(:disabled) {
+  border-color: #a5b4fc;
+  background: #f8faff;
+}
+
+.locationSelected {
+  border-color: #6366f1 !important;
+  background: #eef2ff !important;
+}
+
+.locationDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.locationIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.locationInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.locationName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.locationCategory {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.locationCost {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.costValue {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.costLabel {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.insufficientBadge {
+  font-size: 0.65rem;
+  background: #fce7f3;
+  color: #9d174d;
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  font-weight: 600;
+}
+
+.primaryBtn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+}
+
+.primaryBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.primaryBtn:not(:disabled):hover {
+  opacity: 0.9;
+}
+
+.secondaryBtn {
+  padding: 0.75rem 1.5rem;
+  background: #f1f5f9;
+  color: #374151;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.secondaryBtn:hover {
+  background: #e2e8f0;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Confirm step */
+.confirmBox {
+  background: #f8faff;
+  border: 1px solid #e0e7ff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.confirmLocation {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.25rem;
+}
+
+.confirmIcon {
+  font-size: 1.75rem;
+}
+
+.confirmName {
+  margin: 0 0 0.1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.confirmCategory {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.confirmDivider {
+  height: 1px;
+  background: #e0e7ff;
+}
+
+.confirmRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 1.25rem;
+}
+
+.confirmLabel {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.confirmValue {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.deductValue {
+  color: #dc2626;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+/* Code display */
+.codeCard {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.codeHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.codeLocation {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6366f1;
+  font-weight: 600;
+}
+
+.codeTitle {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.codePoints {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.qrSection {
+  padding: 1.5rem;
+  background: #f8faff;
+  border: 1px solid #e0e7ff;
+  border-radius: 16px;
+}
+
+.codeDetails {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.codeDetailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+}
+
+.codeDetailRow + .codeDetailRow {
+  border-top: 1px solid #e2e8f0;
+}
+
+.codeDetailLabel {
+  font-size: 0.825rem;
+  color: #64748b;
+}
+
+.codeDetailValue {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.codeInstruction {
+  margin: 0;
+  font-size: 0.825rem;
+  color: #64748b;
+  max-width: 380px;
+  line-height: 1.5;
+}
